@@ -1,0 +1,62 @@
+<!--Cnpj	Nome	Cep	Logradouro	Bairro	Cidade	Estado-->
+
+<h3>Cadastro do Cliente!</h3> 
+<hr>
+
+ 
+<div class="row">
+  <div class="col-4">
+    <label >CNPJ</label>
+    <input id="cnpj" type="text" class="form-control" >  
+  </div>
+  <div class="col-8">
+    <label >NOME</label>
+    <input id="nome" type="text" class="form-control" > 
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-4">
+    <label >CEP</label>
+    <input id="cep" type="text" class="form-control" >  
+  </div>
+  <div class="col-8">
+    <label  >LOGRADOURO</label>
+    <input id="logradouro" type="text" class="form-control" > 
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-4">
+    <label >BAIRRO</label>
+    <input id="bairro" type="text" class="form-control" >  
+  </div>
+  <div class="col-4">
+    <label >CIDADE</label>
+    <input id="cidade" type="text" class="form-control" > 
+  </div>
+  <div class="col-4">
+    <label >ESTADO</label>
+    <input id="estado" type="text" class="form-control" > 
+  </div>
+</div>
+
+ 
+
+<br>
+
+<div class="row">
+  <div class="col-6">
+    <button [routerLink]="['/']" routerLinkActive="router-link-active"   class="btn btn-danger">Cancelar</button> 
+  </div>
+  <div class="col-6">
+    <button (click)="SalvarCliente()"  class="btn btn-primary">Salvar</button>
+  </div>
+   
+</div>
+
+
+
+ 

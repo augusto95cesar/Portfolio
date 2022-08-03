@@ -1,0 +1,26 @@
+ <table class="table">
+  <tr>
+    <th>Cnpj</th>
+    <th>Nome</th>
+    <th>Cep</th>
+    <th>Logradouro</th>
+    <th>Bairro</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th><button class="btn btn-primary" [routerLink]="['/cadastrarClientes']" routerLinkActive="router-link-active"  >Novo</button></th> 
+  </tr>
+  <tr *ngFor="let cliente of listaClientes">
+      <td>{{cliente.cnpj}}</td>
+      <td>{{cliente.nomeCliente}}</td>
+      <td>{{cliente.cep}}</td>
+      <td>{{cliente.logradouro}}</td>
+      <td>{{cliente.bairro}}</td>
+      <td>{{cliente.cidade}}</td>
+      <td>{{cliente.estado}}</td>
+      <td>| <span><button [routerLink]="['/editarClientes', iss.value ]"  value="{{cliente.cnpj}}" routerLinkActive="router-link-active" #iss  class="btn btn-warning">Editar</button></span>
+        | <span><button value="{{cliente.id}}" #idCliente (click) = "deletarCliente(idCliente.value)" class="btn btn-danger">Deletar</button></span></td>
+  </tr>
+ </table>
+
+
+ 
