@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MaximaCRUD.Domain\MaximaCRUD.Domain.csproj" />
+    <ProjectReference Include="..\MaximaCRUD.Repository\MaximaCRUD.Repository.csproj" />
+    <ProjectReference Include="..\MaximaCRUD.Service\MaximaCRUD.Service.csproj" />
+  </ItemGroup>
+
+</Project>
