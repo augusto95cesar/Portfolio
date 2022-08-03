@@ -1,0 +1,35 @@
+﻿@model IEnumerable<pontoid.myclinica.Models.convenio>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           
+          <b> Nome:</b> @Html.DisplayFor(modelItem => item.NomeConvenio)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id },new { @class="btn btn-danger"}) 
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="form-group row">
+    <div class="col-md-offset-2 col-md-6">
+        @Html.ActionLink("Novo Convenio", "Create", "convenios", null, new { @class = "btn btn-outline-primary", @type = "button", @id = "larguraTotal" })
+    </div>
+    <div class="col-md-offset-2 col-md-6">
+        @Html.ActionLink("Voltar Agendamento", "Create", "agendamentoConsultas", null, new { @class = "btn btn-outline-danger", @type = "button", @id = "larguraTotal" })
+    </div>
+</div>

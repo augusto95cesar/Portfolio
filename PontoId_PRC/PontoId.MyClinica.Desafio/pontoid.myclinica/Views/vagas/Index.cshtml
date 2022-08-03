@@ -1,0 +1,105 @@
+﻿@model pontoid.myclinica.Models.ViewModel.VagasViewModel
+
+
+
+<br />
+
+
+    <div class="row">
+        <div class="form-group col-lg-3">
+            <br />
+            <div class="col-md-10">
+                @Html.ActionLink("Nova Vagas", "Create", null, new { @class = "btn btn-outline-primary", @type = "button" })
+            </div>
+        </div>
+
+        <div class="form-group col-lg-2">
+            Data Inicio
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataConsulta, new { htmlAttributes = new { @class = "form-control", @id = "DataInicioData" } })
+            </div>
+        </div>
+
+        <div class="form-group col-lg-2">
+            Data Fim
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataConsulta, new { htmlAttributes = new { @class = "form-control", @id = "DataFimData" } })
+            </div>
+        </div>
+        <div class="form-group col-lg-3">
+            <br />
+            @*@Html.LabelFor(model => model.status., htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @*@Html.EnumDropDownListFor(model => model.status, htmlAttributes: new { @class = "form-control" })*@
+            @*@Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })*@
+            @*<select class="form-control" id="statuSelect">
+                    <option name="0" selected>Aguardando Atendimento</option>
+                    <option name="1">Atendido</option>
+                    <option name="2">Nao Compareceu</option>
+                    <option name="3">Cancelado PeloUsuario</option>
+                    <option name="4">Cancelado PelaClinica</option>
+                </select>*@
+            @*@Html.DropDownList("ListaClinica", null , htmlAttributes: new { @class = "form-control" , @name="idclinica"})*@
+        <select class="form-control" id="DataSelectData">
+            @foreach(var item in @ViewBag.ListaClinica)
+            {
+                <option value="@item.Value" name="@item.Value">@item.Text</option>
+            }
+        </select>
+        
+        </div>
+        <div class="form-group col-lg-2">
+            <br />
+            <div class="col-md-10">
+                <button class="btn btn-outline-danger" id="PesquisarDataFilter">Pesquisar</button>
+                @*@Html.EditorFor(model => model.Select(x => x.dataMarcada), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Select(x => x.dataMarcada), "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+    </div>
+
+<div id="DataFilter"> 
+    <table class="table">
+        <tr>
+            <th>
+                Clinica
+            </th>
+            <th>
+                Data Disponivel
+            </th>
+
+            <th>
+                Hora Disponivel
+            </th>
+            <th>
+                Disponivel
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.ListaVagas)
+        {
+            <tr>
+                <td>
+                    @item.NomeClinica
+                </td>
+                <td>
+                    @item.DataString
+                </td>
+
+                <td>
+                    @item.HoraString
+                </td>
+                <td>
+                    @item.DateTimeDisponivel
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

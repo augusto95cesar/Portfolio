@@ -1,0 +1,56 @@
+﻿@model  pontoid.myclinica.Models.ViewModel.Agendamento
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <br />
+    <h4>Editar Agendamento</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <div class="row">
+        <div class="form-group col-lg-6">
+            @*@Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })*@Status
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.status, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-lg-3">
+            <br />
+            <div class="col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-outline-primary" />
+            </div>
+        </div>
+        <div class="form-group col-lg-3">
+            <br />
+            <div class="col-md-10">
+                @Html.ActionLink("Voltar", "Index",null,new { @class= "btn btn-outline-danger" })
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@*<div class="form-group">
+        @Html.LabelFor(model => model.VagasAtendimentoId, "VagasAtendimentoId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("VagasAtendimentoId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.VagasAtendimentoId, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.PacienteId, "PacienteId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PacienteId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PacienteId, "", new { @class = "text-danger" })
+        </div>
+    </div>*@

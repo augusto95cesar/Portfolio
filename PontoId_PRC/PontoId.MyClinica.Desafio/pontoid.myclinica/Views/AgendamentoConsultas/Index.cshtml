@@ -1,0 +1,79 @@
+﻿@*@model IEnumerable<pontoid.myclinica.Models.ViewModel.ListaAgendamento>*@
+@model pontoid.myclinica.Models.ViewModel.Agendamento
+
+
+@{
+    ViewBag.Title = "Agendar Clinica";
+}
+<br />
+<br />
+@*<div class="form-group">
+        @Html.LabelFor(model => model.Select(x => x.dataMarcada), htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(  , new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Select(x => x.dataMarcada), "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Select(x => x.dataMarcada), htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Select(x => x.dataMarcada), new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Select(x => x.dataMarcada), "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+<div class="row">
+    <div class="form-group col-lg-3">
+        <br />
+        @*@Html.LabelFor(model => model.Select(x => x.dataMarcada), htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.ActionLink("Novo Agendamento", "Create", null, new { @class = "btn btn-outline-primary", @type = "button" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-2">
+        @*@Html.LabelFor(model => model.Select(x => x.dataMarcada), htmlAttributes: new { @class = "control-label col-md-2" })*@ Data Inicio
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dataMarcada, new { htmlAttributes = new { @class = "form-control", @id = "dataInicio" } })
+            @*@Html.ValidationMessageFor(model => model.Select(x => x.dataMarcada), "", new { @class = "text-danger"})*@
+        </div>
+    </div>
+
+    <div class="form-group col-lg-2">
+        @*@Html.LabelFor(model => model.Select(x => x.dataMarcada), htmlAttributes: new { @class = "control-label col-md-2" })*@ Data Fim
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dataMarcada, new { htmlAttributes = new { @class = "form-control", @id = "dataFim" } })
+            @*@Html.EditorFor(model => model.Select(x => x.dataMarcada), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Select(x => x.dataMarcada), "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+    <div class="form-group col-lg-3">
+        <br />
+        @*@Html.LabelFor(model => model.status., htmlAttributes: new { @class = "control-label col-md-2" })*@
+        @*@Html.EnumDropDownListFor(model => model.status, htmlAttributes: new { @class = "form-control" })*@
+        @*@Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })*@
+        <select class="form-control" id="statuSelect">
+            <option name="0" selected>Aguardando Atendimento</option>
+            <option name="1">Atendido</option>
+            <option name="2">Nao Compareceu</option>
+            <option name="3">Cancelado PeloUsuario</option>
+            <option name="4">Cancelado PelaClinica</option>
+        </select>
+    </div>
+    <div class="form-group col-lg-2">
+        <br />
+        <div class="col-md-10">
+            <button class="btn btn-outline-danger" id="PesquisarDataStatus">Pesquisar</button>
+            @*@Html.EditorFor(model => model.Select(x => x.dataMarcada), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Select(x => x.dataMarcada), "", new { @class = "text-danger" })*@
+        </div>
+    </div>    
+</div>
+
+<br />
+
+@Html.Partial("_Index", Model)
+
+
+
+

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ErroAction";
+}
+
+<br />
+
+<h4>NÃO FOI POSSIVEL CADASTRAR DATA POR EXCEDER LIMEITE DE 20 VAGAS POR CLINICA NO DIA!</h4>
+
+<br /><br /><br /><br /><br />
+
+<div class="row">
+    <div class="col-lg-6">
+        @Html.ActionLink("Lista de Vagas Em Clinica", "Index", "vagas", null, new {@class= "btn btn-outline-primary" })
+    </div>
+    <div class="col-lg-6">
+        @Html.ActionLink("Agendamento de Consultas", "Create", "AgendamentoConsultas", null, new { @class = "btn btn-outline-primary" })
+    </div>
+</div>

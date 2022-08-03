@@ -1,0 +1,70 @@
+﻿
+<div id="MinhaListaAgendamento">
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.clinica.NomeClinica)*@  Clinica
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Paciente.NomePaciente)*@ Data
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Paciente.NomePaciente)*@ Hora
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.DataAgendamento)*@ CPF
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ConvenioBool)*@Paciente
+            </th>
+            <th>
+                Matricula
+            </th>
+            <th>
+                Convenio
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.)*@ Status
+            </th>
+
+            <th>
+
+            </th>
+        </tr>
+        @foreach (var item in @ViewBag.Lista)
+        {
+            <tr>
+                <td>
+                    @item.clinica
+                </td>
+                <td>
+                    @item.dataMarcada
+                </td>
+                <td>
+                    @item.horaMarcada
+                </td>
+                <td>
+                    @item.cpf
+                </td>
+                <td>
+                    @item.nomePaciente
+                </td>
+                <td>
+                    @item.matricula
+                </td>
+                <td>
+                    @item.nomeCovenio
+                </td>
+
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.status)*@
+                    @item.status
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = @item.Id }, new { @class = "btn btn-outline-primary", @type = "button" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@*<script type="text/javascript" src="~/Scripts/js/ListarAgendamento.js"></script>*@

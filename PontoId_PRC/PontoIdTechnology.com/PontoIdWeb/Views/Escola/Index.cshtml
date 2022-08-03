@@ -1,0 +1,135 @@
+﻿@model IEnumerable<PontoIdWeb.ModelView.EscolaView>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table" id="tabela">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>INEP</th>
+            <th colspan="3">
+                <form asp-action="CadastrarEditar" asp-controller="Escola">
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigoINEP)
+                </td>
+                <td id="btnTabela">
+                    <form asp-action="CadastrarEditar" asp-controller="Escola">
+                        <input name="id" type="hidden" value="@item.id" />
+                        <button type="submit">Editar</button>
+                    </form>
+                </td>
+                <td>
+                    <button id="@item.id" name="@item.nome" onclick="ModalDisplay(this)">Deletar</button>
+                    <form asp-action="DeletarEscola" asp-controller="Escola">
+                        <input name="id" type="hidden" value="@item.id" />
+                        <button id="@("DeletarEscola" + @item.id)" style="display:none" type="submit"></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    button {
+        width: 99%;
+    }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        height: 50%;
+        overflow: scroll;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+<script>
+    function spanClose() {
+        document.getElementById("ModalOpcao").style.display = "none";
+        document.getElementById("TextoModual").innerText = "";
+    }
+    function ModalDisplay(rest) {
+        console.log(rest.id);
+        //DeletarEscola
+        console.log(rest.getAttribute("name"));
+        document.getElementById("TextoModual").innerText = rest.getAttribute("name");
+        document.getElementById("excluirButtonEscolaModal").setAttribute("name", "DeletarEscola" + rest.id)
+        document.getElementById("ModalOpcao").style.display = "block";
+    }
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("ModalOpcao")) {
+            document.getElementById("ModalOpcao").style.display = "none";
+            document.getElementById("TextoModual").innerText = "";
+        }
+    }
+    function ExcluirEscolaModal(excluir) {
+        console.log("Exluir" + excluir.getAttribute("name"));
+        document.getElementById(excluir.getAttribute("name")).click();
+    }
+</script>
+
+<div id="ModalOpcao" class="modal">
+    <div class="modal-content">
+        <span onclick="spanClose()" class="close">&times;</span>
+        <hr />
+
+        <h4>DESEJA EXCLUIR: <span id="TextoModual"></span> ?</h4>
+        <hr />
+        <div class="row">
+            <div class="col-6">
+                <button onclick="spanClose()">Cancelar</button>
+            </div>
+            <div class="col-6">
+                <button id="excluirButtonEscolaModal" name="" onclick="ExcluirEscolaModal(this)">Escluir</button>
+            </div>
+        </div>
+    </div>
+</div>

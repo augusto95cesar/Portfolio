@@ -1,0 +1,238 @@
+﻿@model pontoid.myclinica.Models.ViewModel.AgendamentoConsulta
+
+<br />
+<div class="row container" id="agendamentomargin">
+    <div class="col-lg-4">
+        <h4>Agendamento de Consulta</h4>
+    </div>
+    <div class="col-lg-4"></div>
+
+    <div class="col-lg-4">
+        @Html.ActionLink("Voltar Para Lista de Agendamento", "Index", null, new { @class = "btn btn-outline-primary", @type = "button", @id = "larguraTotal" })
+    </div>
+</div>
+
+<div id="agendamentoConcluido">
+    <div class="form-horizontal container">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="row">
+            <div class="form-group col-lg-4">
+                <Label class="control-label col-md-10 ">Clinicas</Label>
+                <div class="col-md-10">
+                    @Html.DropDownList("ClinicaId", null, htmlAttributes: new { @class = "form-control", @id = "ClinicaSelect" })
+                </div>
+            </div>
+            <div class="form-group col-lg-2">
+                <Label class="control-label col-md-10 ">Data</Label>
+                <div class="col-md-10" id="DataAgendamento">
+                    <input type="text" value="00/00/0000" class="form-control" disabled />
+                </div>
+            </div>
+            <div class="form-group col-lg-2">
+                <Label class="control-label col-md-10 ">Horas</Label>
+                <div class="col-md-10" id="HoraAgendamento">
+                    <input type="text" value="00:00" class="form-control" disabled />
+                </div>
+            </div>
+            <div class="form-group col-lg-2">
+                <Label class="control-label col-md-10 ">Qt Vagas</Label>
+                <div class="col-md-10" >
+                    <input type="text" id="qtVagas" value="0" class="form-control" disabled />
+                </div>
+            </div>
+
+            <div class="form-group col-lg-2">
+                <br />
+                <div class="col-md-10" id="btnAgendar">
+                    <button class="btn btn-outline-danger" id="CadastraAgendamento">Agendar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-lg-4">
+                @Html.LabelFor(model => model.Paciente.CPF, htmlAttributes: new { @class = "control-label col-md-2", @id = "larguraTotal" })
+                <div class="col-md-10">
+                    <input type="text" class="form-control cpfJsonClass" id="cpfJsonId" />
+                    @*@Html.EditorFor(model => model.Paciente.CPF, new { htmlAttributes = new { @class = "form-control cpfJsonClass", @id = "larguraTotal cpfJsonId" } })*@
+                    @Html.ValidationMessageFor(model => model.Paciente.CPF, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-lg-8">
+                <Label class="control-label col-md-10">Nome Paciente</Label>
+                <div class="col-md-10">
+                    <input type="text" name="idpaciente" class="form-control nomeJsonClass" id="pacienteJsonId" />
+                    @*@Html.EditorFor(model => model.Paciente.NomePaciente, new { htmlAttributes = new { @class = "form-control", @id = "larguraTotal" } })*@
+                    @Html.ValidationMessageFor(model => model.Paciente.NomePaciente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-4">
+                @Html.LabelFor(model => model.Paciente.Telefone, htmlAttributes: new { @class = "control-label col-md-2", @id = "larguraTotal" })
+                <div class="col-md-10">
+                    <input type="text" name="idtelefone" class="form-control cpfJsonClass" id="telefoneJsonId" />
+                    @*@Html.EditorFor(model => model.Paciente.Telefone, new { htmlAttributes = new { @class = "form-control", @id = "larguraTotal" } })*@
+                    @Html.ValidationMessageFor(model => model.Paciente.Telefone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-lg-8">
+                @Html.LabelFor(model => model.Paciente.Email, htmlAttributes: new { @class = "control-label col-md-2", @id = "larguraTotal" })
+                <div class="col-md-10">
+                    <input type="text" name="idemail" class="form-control cpfJsonClass" id="emailJsonId" />
+                    @*@Html.EditorFor(model => model.Paciente.Email, new { htmlAttributes = new { @class = "form-control", @id = "larguraTotal" } })*@
+                    @Html.ValidationMessageFor(model => model.Paciente.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="notConvenio" style="display:none">
+            <div class="form-group col-lg-4">
+                <Label class="control-label col-md-10">Convenio</Label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control nomeJsonClass" placeholder="Particular" disabled />
+                    @Html.ValidationMessageFor(model => model.Paciente.NomePaciente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-lg-4">
+                <br />
+                <input class="btn btn-outline-primary" id="addConvenio" value="Editar">
+            </div>
+        </div>
+        <div class="row" id="TemConvenio" style="display:none">
+            <div class="form-group col-lg-4">
+                <Label class="control-label col-md-10">Matricula</Label>
+                <div class="col-md-10">
+                    <input type="text" id="TemConvenioMatricula" class="form-control nomeJsonClass" disabled />
+                    @Html.ValidationMessageFor(model => model.Paciente.NomePaciente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-lg-4">
+                <Label class="control-label col-md-10">Convenio</Label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control nomeJsonClass" id="TemConvenioNome" disabled />
+                    @Html.ValidationMessageFor(model => model.Paciente.NomePaciente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="Cadastrar">
+            <div class="form-group col-lg-4">
+                <Label class="control-label col-md-2">Matricula</Label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control nomeJsonClass" id="idmatricula" />
+                    @*@Html.EditorFor(model => model.Agendamento.NumeroMatricula, new { htmlAttributes = new { @class = "form-control", @id = "idmatricula", @type = "text" } })
+                        @Html.ValidationMessageFor(model => model.Agendamento.NumeroMatricula, "", new { @class = "text-danger" })*@
+
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <Label class="control-label col-md-10 ">Convenios</Label>
+                <div class="col-md-10">
+                    @Html.DropDownList("ConvenioList", null, htmlAttributes: new { @class = "form-control", @id = "convenioJsonDrop" })
+                </div>
+
+            </div>
+            <div class="form-group col-lg-2">
+                <br />
+                <div class="col-md-10">
+                    @*@Html.ActionLink("Novo Convenio", "Create", "convenios", null, new { @class = "btn btn-outline-primary", @type = "button", @id = "larguraTotal btnCreate" })*@
+                    <button class="btn btn-outline-primary" id="SalvarPaciente">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="EditarConvenio" style="display:none">
+            <div class="form-group col-lg-4">
+                <Label class="control-label col-md-2">Matricula</Label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Agendamento.NumeroMatricula, new { htmlAttributes = new { @class = "form-control", @id = "larguraTotal  numeroff", @type = "text" } })
+                        @Html.ValidationMessageFor(model => model.Agendamento.NumeroMatricula, "", new { @class = "text-danger" })*@
+
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <Label class="control-label col-md-10 ">Convenios</Label>
+                <div class="col-md-10">
+                    @Html.DropDownList("ConvenioList", null, htmlAttributes: new { @class = "form-control", @id = "convenioJsonDrop" })
+                </div>
+
+            </div>
+            <div class="form-group col-lg-2">
+                <br />
+                <div class="col-md-10">
+                    @Html.ActionLink("Novo Convenio", "Create", "convenios", null, new { @class = "btn btn-outline-primary", @type = "button", @id = "larguraTotal btnCreate" })
+                </div>
+            </div>
+        </div>
+        <div style="display:none">
+            @Html.ActionLink("Voltar", "Index", null, new { @type = "button", @id = "voltarIndex" })
+        </div>
+    </div>
+</div>
+
+@*<button id="test">Test</button>*@
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript" src="~/Scripts/js/AgendamentoConsultas.js"></script>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+@*<div class="row">
+        <div class="form-group col-lg-6">
+            <Label class="control-label col-md-10 ">Clinicas</Label>
+            <div class="col-md-10">
+                @Html.DropDownList("ClinicaId", null, htmlAttributes: new { @class = "form-control", @id = "idclinicaJson" })
+            </div>
+        </div>
+        <div class="form-group col-lg-2">
+            <Label class="control-label col-md-10 ">Data</Label>
+            <div class="col-md-10" id="DataAgendamento">
+                <select class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group col-lg-2">
+            <Label class="control-label col-md-10 ">Horas</Label>
+            <div class="col-md-10" id="HoraAgendamento">
+                <select class="form-control">
+                    <option>08:30</option>
+                    <option>08:35</option>
+                    <option>08:40</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group col-lg-2">
+            <Label class="control-label col-md-10 ">Macar</Label>
+            <div class="col-md-10">
+                <button id="registrar" class="btn btn-outline-danger">Agendar</button>
+            </div>
+        </div>
+    </div>*@
+
+@*<div class="row">
+        <div class="form-group">
+            @Html.LabelFor(model => model.vagasData.DataConsulta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vagasData.DataConsulta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.vagasData.DataConsulta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vagasData.Horas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vagasData.Horas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.vagasData.Horas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
+
+
