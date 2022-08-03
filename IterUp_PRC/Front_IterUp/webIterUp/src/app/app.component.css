@@ -1,0 +1,54 @@
+.menu {
+  background: white;
+  text-align: center;
+  border-bottom: #252525b8 1px solid;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.links-menu li {
+  display: inline;
+  margin: 50px;
+}
+
+.conteudo {
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#chatbot:hover {
+  cursor: pointer;
+  background: orange;
+  color: red;
+}
+
+#chatbot {
+  width: 100px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: red;
+  z-index: 5;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+app-chatbot {
+  width: 300px;
+  height: 500px;
+  border-radius: 5%;
+  background-color: white;
+  border: #252525b8 1px solid;
+  z-index: 10;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}

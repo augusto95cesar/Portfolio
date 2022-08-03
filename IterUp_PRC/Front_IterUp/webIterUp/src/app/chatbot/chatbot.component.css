@@ -1,0 +1,18 @@
+#menu-chat-box{
+    height: 30px;
+    background: red;
+    width: 100%;
+    position: relative;
+}
+
+#menu-chat-box-close:hover{
+    cursor: pointer;
+}
+
+#menu-chat-box-close{
+    width: 10%;
+    position: absolute;
+    right: 0px;
+    margin-top: 5px;
+    color:white;
+}
