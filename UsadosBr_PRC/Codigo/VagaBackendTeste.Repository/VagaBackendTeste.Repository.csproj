@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VagaBackendTeste.Data\VagaBackendTeste.Data.csproj" />
+    <ProjectReference Include="..\VagaBackendTeste.Domain\VagaBackendTeste.Domain.csproj" />
+    <ProjectReference Include="..\VagaBackendTeste.Service\VagaBackendTeste.Service.csproj" />
+  </ItemGroup>
+
+</Project>

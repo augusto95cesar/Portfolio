@@ -1,0 +1,3 @@
+﻿1>------ Compilação iniciada: Projeto: VagaBackendTeste, Configuração: Debug Any CPU ------
+1>VagaBackendTeste -> C:\www\UsadosBr\vaga-backend-teste\Codigo\bin\Debug\netcoreapp3.1\VagaBackendTeste.dll
+========== Compilar: 1 com êxito, 0 com falha, 0 atualizados, 0 ignorados ==========
